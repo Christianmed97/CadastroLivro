@@ -1,0 +1,5 @@
+package br.edu.infnet.AppChristian.model.domain;
+
+public class Livro {
+
+}

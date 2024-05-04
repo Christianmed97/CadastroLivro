@@ -1,0 +1,9 @@
+package br.edu.infnet.AppChristian.model.domain;
+
+public class Literario extends Livro {
+	
+	public String tema;
+	public boolean infantil;
+	public String tipo;
+
+}
