@@ -2,9 +2,12 @@ package br.edu.infnet.AppChristian.model.domain;
 
 public class Academico extends Livro {
 	
-	public String area;
-	public String volume;
+	private String area;
+	private String volume;
 	
+	public String toString() {
+		 return String.format("%s - %s - %s",super.toString(), area,volume);
+	}
 	public String getArea() {
 		return area;
 	}

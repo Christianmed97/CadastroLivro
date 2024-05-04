@@ -1,12 +1,23 @@
 package br.edu.infnet.AppChristian.model.domain;
 
-public class Livro {
+public abstract class Livro {
 	
-	public String nome;
-	public String autor;
-	public int numeroPaginas;
-	public String preco;
-	public String sinopse;
+	private int id;
+	private String nome;
+	private String autor;
+	private int numeroPaginas;
+	private float preco;
+	private String sinopse;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String toString() {
+	 return String.format("%s - %s - %d -%f - %s", nome,autor, numeroPaginas,preco,sinopse);
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -25,10 +36,10 @@ public class Livro {
 	public void setNumeroPaginas(int numeroPaginas) {
 		this.numeroPaginas = numeroPaginas;
 	}
-	public String getPreco() {
+	public float getPreco() {
 		return preco;
 	}
-	public void setPreco(String preco) {
+	public void setPreco(float preco) {
 		this.preco = preco;
 	}
 	public String getSinopse() {

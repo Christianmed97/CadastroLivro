@@ -2,9 +2,13 @@ package br.edu.infnet.AppChristian.model.domain;
 
 public class Literario extends Livro {
 	
-	public String tema;
-	public boolean infantil;
-	public String tipo;
+	private String tema;
+	private boolean infantil;
+	private String tipo;
+	
+	public String toString() {
+		 return String.format("%s - %s - %s - %s",super.toString(), tema,infantil,tipo);
+	}
 	public String getTema() {
 		return tema;
 	}
