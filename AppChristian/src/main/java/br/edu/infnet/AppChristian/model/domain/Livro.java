@@ -16,7 +16,7 @@ public abstract class Livro {
 		this.id = id;
 	}
 	public String toString() {
-	 return String.format("%s - %s - %d -%f - %s", nome,autor, numeroPaginas,preco,sinopse);
+	 return String.format("%d - %s - %s - %d -%f - %s",id, nome,autor, numeroPaginas,preco,sinopse);
 	}
 	public String getNome() {
 		return nome;

@@ -1,5 +1,5 @@
 L;Tolkien;Senhor dos aneis;576;100;Seila;fantasia;false;livro
 L;Tradd Moore;Motoqueiro Fantasma Vol.1;140;99;sinopse doida;fantasia;false;quadrinho
-L;Mauricio de Souza; Turma da monica Vol.5;20;10;sinopse louca;true;drama;quadrinho
 A;James Steward; Calculo ;300;200; outra sinopse maluca;Matematica;3
 A;Macchiavelli;O principe ;250;50;sinopse maluca;Filosofia;1
+L;Mauricio de Souza; Turma da monica Vol.5;20;10;sinopse louca;true;drama;quadrinho

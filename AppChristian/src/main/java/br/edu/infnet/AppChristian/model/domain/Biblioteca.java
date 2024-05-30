@@ -1,5 +1,6 @@
 package br.edu.infnet.AppChristian.model.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca {
@@ -8,9 +9,13 @@ public class Biblioteca {
 	private String nome;
 	private String endereco;
 	
+	public Biblioteca() {
+		Livro = new ArrayList<Livro>();
+	}
+	
 	@Override
 	public String toString() {
-		return String.format("%s - %s", nome,endereco);
+		return String.format("%d - %s - %s - %s", id, nome,endereco,Livro);
 	}
 	public int getId() {
 		return id;
@@ -30,12 +35,15 @@ public class Biblioteca {
 	public void setEndereco(String endereço) {
 		this.endereco = endereço;
 	}
-	public List<Livro> getLivro() {
-		return Livro;
-	}
+	
 	public void setLivro(List<Livro> livro) {
 		Livro = livro;
 	}
 	public List<Livro> Livro;
+
+	public List<Livro> getLivro() {
+		return Livro;
+	}
+	
 
 }

@@ -1,3 +1,0 @@
-Tolkien;Senhor dos aneis;576;100;Seila;fantasia;false;livro
-Tradd Moore;Motoqueiro Fantasma Vol.1;140;99;sinopse doida;fantasia;false;quadrinho
-Mauricio de Souza; Turma da monica Vol.5;20;10;sinopse louca;true;drama;quadrinho

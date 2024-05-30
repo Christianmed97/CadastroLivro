@@ -35,7 +35,7 @@ public class LivroLoader implements ApplicationRunner{
 		BufferedReader br=new BufferedReader(fr);
 		String linha = br.readLine();
 		String[] campos = null;
-		
+		Livro livro = null;
 		System.err.println("Livro");
 		int contador=0;
 		while(linha!=null) {	
@@ -52,9 +52,7 @@ public class LivroLoader implements ApplicationRunner{
 				academico.setSinopse(campos[5]);
 				academico.setArea(campos[6]);
 				academico.setVolume(campos[7]);
-				academicoService.incluir(academico);
-				linha=br.readLine();
-				
+				livroService.incluir(academico);
 			break;
 		case "L":				
 				campos= linha.split(";");
@@ -69,9 +67,7 @@ public class LivroLoader implements ApplicationRunner{
 				literario.setTema(campos[6]);
 				literario.setInfantil(Boolean.valueOf(campos[7]));
 				literario.setTipo(campos[8]);
-				literarioService.incluir(literario);
-				linha=br.readLine();
-			
+				livroService.incluir(literario);		
 			break;
 		default:
 			System.out.println("tipoInvalido");
@@ -81,8 +77,8 @@ public class LivroLoader implements ApplicationRunner{
 		linha=br.readLine();
 		
 		}
-		for(Livro livro: livroService.obterLista()) {
-			System.out.println(livro);
+		for(Livro livro2: livroService.obterLista()) {
+			System.out.println(livro2);
 		}
 		br.close();
 	}

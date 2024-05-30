@@ -22,4 +22,10 @@ public class AcademicoService {
 	public Collection<Academico> obterLista(){
 		return mapa.values();
 	}
+	public Academico obterPorId(Integer id) {
+		return mapa.get(id);
+	}
+	public void excluir(Integer id) {
+		mapa.remove(id);
+	}
 }

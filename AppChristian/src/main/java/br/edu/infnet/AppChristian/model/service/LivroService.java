@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.AppChristian.model.domain.Biblioteca;
+import br.edu.infnet.AppChristian.model.domain.Literario;
 import br.edu.infnet.AppChristian.model.domain.Livro;
 
 @Service
@@ -21,5 +22,11 @@ public class LivroService {
 	}
 	public Collection<Livro> obterLista(){
 		return mapa.values();
+	}
+	public Livro obterPorId(Integer id) {
+		return mapa.get(id);
+	}
+	public void excluir(Integer id) {
+		mapa.remove(id);
 	}
 }

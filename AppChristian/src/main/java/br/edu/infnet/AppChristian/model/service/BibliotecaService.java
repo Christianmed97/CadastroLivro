@@ -1,6 +1,7 @@
 package br.edu.infnet.AppChristian.model.service;
 
 import java.util.Collection;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,5 +21,11 @@ public class BibliotecaService {
 	}
 	public Collection<Biblioteca> obterLista(){
 		return mapa.values();
+	}
+	public Biblioteca obterPorId(Integer id) {
+		return mapa.get(id);
+	}
+	public void excluir(Integer id) {
+		mapa.remove(id);
 	}
 }
