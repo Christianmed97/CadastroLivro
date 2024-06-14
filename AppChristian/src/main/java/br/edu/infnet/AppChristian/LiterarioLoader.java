@@ -2,19 +2,18 @@ package br.edu.infnet.AppChristian;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.AppChristian.model.domain.Academico;
 import br.edu.infnet.AppChristian.model.domain.Biblioteca;
 import br.edu.infnet.AppChristian.model.domain.Literario;
 import br.edu.infnet.AppChristian.model.service.LiterarioService;
 
+@Order(3)
 @Component
 public class LiterarioLoader implements ApplicationRunner{
 	
@@ -30,13 +29,11 @@ public class LiterarioLoader implements ApplicationRunner{
 		String[] campos = null;
 		
 		System.err.println("Literario");
-		int contador=0;
 		while(linha!=null) {	
 			
 			campos= linha.split(";");
 			
 			Literario literario = new Literario();
-			literario.setId(++contador);
 			literario.setAutor(campos[0]);
 			literario.setNome(campos[1]);
 			literario.setNumeroPaginas(Integer.valueOf(campos[2]));
@@ -45,6 +42,7 @@ public class LiterarioLoader implements ApplicationRunner{
 			literario.setTema(campos[5]);
 			literario.setInfantil(Boolean.valueOf(campos[6]));
 			literario.setTipo(campos[7]);
+			literario.setBiblioteca(new Biblioteca(Integer.valueOf(campos[8])));
 			literarioService.incluir(literario);
 			
 			linha=br.readLine();

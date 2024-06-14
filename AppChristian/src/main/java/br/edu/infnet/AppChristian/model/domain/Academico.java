@@ -1,10 +1,16 @@
 package br.edu.infnet.AppChristian.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tabelaAcademico")
 public class Academico extends Livro {
 	
 	private String area;
 	private String volume;
 	
+	@Override
 	public String toString() {
 		 return String.format("%s - %s - %s",super.toString(), area,volume);
 	}

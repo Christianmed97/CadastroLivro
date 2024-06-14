@@ -2,12 +2,11 @@ package br.edu.infnet.AppChristian;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.AppChristian.model.domain.Academico;
@@ -18,6 +17,7 @@ import br.edu.infnet.AppChristian.model.service.AcademicoService;
 import br.edu.infnet.AppChristian.model.service.LiterarioService;
 import br.edu.infnet.AppChristian.model.service.LivroService;
 
+@Order(4)
 @Component
 public class LivroLoader implements ApplicationRunner{
 	
@@ -35,16 +35,12 @@ public class LivroLoader implements ApplicationRunner{
 		BufferedReader br=new BufferedReader(fr);
 		String linha = br.readLine();
 		String[] campos = null;
-		Livro livro = null;
 		System.err.println("Livro");
-		int contador=0;
 		while(linha!=null) {	
-			
 			campos= linha.split(";");
 		switch (campos[0]) {
 		case "A": 
 				Academico academico = new Academico();
-				academico.setId(++contador);
 				academico.setAutor(campos[1]);
 				academico.setNome(campos[2]);
 				academico.setNumeroPaginas(Integer.valueOf(campos[3]));
@@ -52,13 +48,13 @@ public class LivroLoader implements ApplicationRunner{
 				academico.setSinopse(campos[5]);
 				academico.setArea(campos[6]);
 				academico.setVolume(campos[7]);
+				academico.setBiblioteca(new Biblioteca(Integer.valueOf(campos[8])));
 				livroService.incluir(academico);
 			break;
 		case "L":				
 				campos= linha.split(";");
 				
 				Literario literario = new Literario();
-				literario.setId(++contador);
 				literario.setAutor(campos[1]);
 				literario.setNome(campos[2]);
 				literario.setNumeroPaginas(Integer.valueOf(campos[3]));
@@ -67,6 +63,7 @@ public class LivroLoader implements ApplicationRunner{
 				literario.setTema(campos[6]);
 				literario.setInfantil(Boolean.valueOf(campos[7]));
 				literario.setTipo(campos[8]);
+				literario.setBiblioteca(new Biblioteca(Integer.valueOf(campos[9])));
 				livroService.incluir(literario);		
 			break;
 		default:

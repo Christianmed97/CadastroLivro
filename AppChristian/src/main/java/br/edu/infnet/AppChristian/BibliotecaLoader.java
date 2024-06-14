@@ -2,27 +2,30 @@ package br.edu.infnet.AppChristian;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.AppChristian.model.domain.Academico;
 import br.edu.infnet.AppChristian.model.domain.Biblioteca;
 import br.edu.infnet.AppChristian.model.domain.Literario;
+import br.edu.infnet.AppChristian.model.service.AcademicoService;
 import br.edu.infnet.AppChristian.model.service.BibliotecaService;
+import br.edu.infnet.AppChristian.model.service.LiterarioService;
 
+@Order(1)
 @Component
 public class BibliotecaLoader implements ApplicationRunner{
 	
 	@Autowired
 	public BibliotecaService bibliotecaService;
+	@Autowired
+	public AcademicoService academicoService;
+	@Autowired
+	public LiterarioService literarioService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -35,23 +38,18 @@ public class BibliotecaLoader implements ApplicationRunner{
 		String[] campos = null;
 		Biblioteca biblioteca = null;
 		System.err.println("Biblioteca");
-		
-		int contadorBiblioteca=0;
-		int contadorProduto=0;
 		while(linha!=null) {	
 			
 		campos= linha.split(";");
 		switch(campos[0].toUpperCase()) {
 		case "B":
 			biblioteca = new Biblioteca();
-			biblioteca.setId(++contadorBiblioteca);
 			biblioteca.setEndereco(campos[1]);
 			biblioteca.setNome(campos[2]);
 			bibliotecaService.incluir(biblioteca);
 			break;
 		case "A": 
 			Academico academico = new Academico();
-			academico.setId(++contadorProduto);
 			academico.setAutor(campos[1]);
 			academico.setNome(campos[2]);
 			academico.setNumeroPaginas(Integer.valueOf(campos[3]));
@@ -59,11 +57,12 @@ public class BibliotecaLoader implements ApplicationRunner{
 			academico.setSinopse(campos[5]);
 			academico.setArea(campos[6]);
 			academico.setVolume(campos[7]);
+			academico.setBiblioteca(biblioteca);
+			academicoService.incluir(academico);
 			biblioteca.getLivro().add(academico);
 		break;
 	case "L":
 			Literario literario = new Literario();
-			literario.setId(++contadorProduto);
 			literario.setAutor(campos[1]);
 			literario.setNome(campos[2]);
 			literario.setNumeroPaginas(Integer.valueOf(campos[3]));
@@ -72,6 +71,8 @@ public class BibliotecaLoader implements ApplicationRunner{
 			literario.setTema(campos[6]);
 			literario.setInfantil(Boolean.valueOf(campos[7]));
 			literario.setTipo(campos[8]);
+			literario.setBiblioteca(biblioteca);
+			literarioService.incluir(literario);
 			biblioteca.getLivro().add(literario);
 		break;
 		}

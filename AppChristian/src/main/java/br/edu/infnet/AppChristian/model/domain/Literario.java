@@ -1,5 +1,10 @@
 package br.edu.infnet.AppChristian.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tabelaLiterario")
 public class Literario extends Livro {
 	
 	private String tema;

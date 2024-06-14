@@ -1,32 +1,32 @@
 package br.edu.infnet.AppChristian.model.service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.infnet.AppChristian.model.domain.Academico;
-import br.edu.infnet.AppChristian.model.domain.Biblioteca;
 import br.edu.infnet.AppChristian.model.domain.Literario;
+import br.edu.infnet.AppChristian.model.repository.LiterarioRepository;
 
 @Service
 public class LiterarioService {
 
-	public static Map<Integer, Literario> mapa = new  HashMap<Integer, Literario>();
-	public static int contador=0;
+	@Autowired
+	public LiterarioRepository literarioRepository;
 	
 	public void incluir(Literario literario) {
-		literario.setId(++contador);
-		mapa.put(literario.getId(), literario);
+		literarioRepository.save(literario);
 	}
 	public Collection<Literario> obterLista(){
-		return mapa.values();
+		return (Collection<Literario>) literarioRepository.findAll();
 	}
 	public Literario obterPorId(Integer id) {
-		return mapa.get(id);
+		return literarioRepository.findById(id).orElse(null);
 	}
 	public void excluir(Integer id) {
-		mapa.remove(id);
+		literarioRepository.deleteById(id);
+	}
+	public long quantidade() {
+		return literarioRepository.count();
 	}
 }

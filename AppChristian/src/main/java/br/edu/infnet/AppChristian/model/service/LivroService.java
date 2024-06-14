@@ -4,29 +4,30 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import br.edu.infnet.AppChristian.model.domain.Biblioteca;
-import br.edu.infnet.AppChristian.model.domain.Literario;
 import br.edu.infnet.AppChristian.model.domain.Livro;
+import br.edu.infnet.AppChristian.model.repository.LivroRepository;
 
 @Service
 public class LivroService {
 
-	public static Map<Integer, Livro> mapa = new  HashMap<Integer, Livro>();
-	public static int contador=0;
+	@Autowired
+	public LivroRepository livroRepository;
 	
 	public void incluir(Livro livro) {
-		livro.setId(++contador);
-		mapa.put(livro.getId(), livro);
+		livroRepository.save(livro);
 	}
 	public Collection<Livro> obterLista(){
-		return mapa.values();
+		return (Collection<Livro>) livroRepository.findAll();
 	}
 	public Livro obterPorId(Integer id) {
-		return mapa.get(id);
+		return livroRepository.findById(id).orElse(null);
 	}
 	public void excluir(Integer id) {
-		mapa.remove(id);
+		livroRepository.deleteById(id);
+	}
+	public long quantidade() {
+		return livroRepository.count();
 	}
 }
