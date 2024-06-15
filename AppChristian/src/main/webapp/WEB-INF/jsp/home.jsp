@@ -14,7 +14,7 @@
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link active" href="/">AppVenda</a></li>
+				<li class="nav-item"><a class="nav-link active" href="/">AppLivro</a></li>
 				<li class="nav-item"><a class="nav-link" href="/biblioteca/listagem">Biblioteca</a></li>
 				<li class="nav-item"><a class="nav-link" href="/livro/listagem">Livros</a></li>
 				<li class="nav-item"><a class="nav-link" href="/academico/listagem">Academicos</a></li>
@@ -33,7 +33,7 @@
 
 		<c:if test="${not empty listagem}">
 			<h2>AppVenda</h2>
-			<p>Gestão de vendas de livros:</p>
+			<p>GestÃ£o de vendas de livros:</p>
 			<table class="table">
 				<thead class="table-dark">
 					<tr>
@@ -57,7 +57,7 @@
 		            <div class="card-body">
 		                <h5 class="card-title">Elberth LC Moraes</h5>
 		                <p class="card-text"><strong>Telefone:</strong> (21) 99601-6255</p>
-		                <p class="card-text">Atuo como professor universitário desde o dia primeiro de abril de dois mil e onze. Neste dia descobri mais uma verdade na minha vida: observar como as pessoas aprendem e ensinam.</p>
+		                <p class="card-text">Atuo como professor universitï¿½rio desde o dia primeiro de abril de dois mil e onze. Neste dia descobri mais uma verdade na minha vida: observar como as pessoas aprendem e ensinam.</p>
 		                <a href="https://github.com/Banco-de-Dados-e-Persistencia-em-Java" class="btn btn-primary">GitHub do Projeto</a>
 		                <a href="https://www.linkedin.com/in/elberth/" class="btn btn-secondary">LinkedIn</a>
 		            </div>

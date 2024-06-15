@@ -3,6 +3,7 @@ package br.edu.infnet.AppChristian.controllers;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.infnet.AppChristian.model.domain.Academico;
+import br.edu.infnet.AppChristian.model.domain.Biblioteca;
 import br.edu.infnet.AppChristian.model.service.AcademicoService;
 
 @RestController
@@ -23,12 +25,14 @@ public class AcademicoController {
 	public Collection<Academico> obterLista(){
 		return academicoService.obterLista();
 	}
-	
 	@GetMapping(value = "/academico/{id}")
 	public Academico obterPorId(@PathVariable Integer id) {
 		return academicoService.obterPorId(id);
 	}
-	
+	@GetMapping(value = "/academico/lista/{area}")
+	public Collection<Academico> obterPorArea(@PathVariable String area) {
+		return academicoService.obterPorArea(area);
+	}
 	@PostMapping(value = "/academico/incluir")
 	public void incluir(@RequestBody Academico academico) {
 		System.out.println("dasdsad"+academico);

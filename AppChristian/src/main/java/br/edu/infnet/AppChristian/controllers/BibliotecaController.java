@@ -29,7 +29,10 @@ public class BibliotecaController {
 	public Biblioteca obterPorId(@PathVariable Integer id) {
 		return bibliotecaService.obterPorId(id);
 	}
-	
+	@GetMapping(value = "/biblioteca/lista/{email}")
+	public Biblioteca obterPorEmail(@PathVariable String email) {
+		return bibliotecaService.obterPorEmail(email);
+	}
 	@PostMapping(value = "/biblioteca/incluir")
 	public void incluir(@RequestBody Biblioteca biblioteca) {
 		bibliotecaService.incluir(biblioteca);

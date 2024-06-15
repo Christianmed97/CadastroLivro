@@ -1,5 +1,6 @@
 package br.edu.infnet.AppChristian.model.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,9 +10,14 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.ManyToAny;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "tabelaLivro")
@@ -21,13 +27,24 @@ public abstract class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotBlank
+	@Size(min=3,max=100,message="O nome precisa ter mais de 3 letras e menos de 100")
+	@Column(name = "cs_nome")
 	private String nome;
+	@NotBlank
+	@Column(name = "cs_autor")
 	private String autor;
+	@Min(1)
+	@Max(2000)
+	@Column(name = "qt_numeroPaginas")
 	private int numeroPaginas;
+	@Min(0)
+	@Column(name = "vl_preco")
 	private float preco;
 	private String sinopse;
 	@ManyToOne
 	@JoinColumn(name = "id_livro")
+	@JsonBackReference
 	private Biblioteca biblioteca;
 	
 	public Biblioteca getBiblioteca() {

@@ -1,6 +1,5 @@
 package br.edu.infnet.AppChristian.controllers;
 
-import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,24 +36,40 @@ public class AppController {
 	public String listarBiblioteca(Model model){
 		model.addAttribute("titulo","Listagem de Bibliotecas");
 		model.addAttribute("listagem", bibliotecaService.obterLista());
+		model.addAttribute("qtdeBiblioteca", bibliotecaService.quantidade());
+		model.addAttribute("qtdeLivros", livroService.quantidade());
+		model.addAttribute("qtdeLiterarios", literarioService.quantidade());
+		model.addAttribute("qtdeAcademicos", academicoService.quantidade());
 		return "home";
 	}
 	@GetMapping(value = "/livro/listagem")
 	public String listarLivro(Model model){
 		model.addAttribute("titulo","Listagem de Livros");
 		model.addAttribute("listagem", livroService.obterLista());
+		model.addAttribute("qtdeBiblioteca", bibliotecaService.quantidade());
+		model.addAttribute("qtdeLivros", livroService.quantidade());
+		model.addAttribute("qtdeLiterarios", literarioService.quantidade());
+		model.addAttribute("qtdeAcademicos", academicoService.quantidade());
 		return "home";
 	}
 	@GetMapping(value = "/literario/listagem")
 	public String listarLiterario(Model model){
 		model.addAttribute("titulo","Listagem de Literarios");
 		model.addAttribute("listagem", literarioService.obterLista());
+		model.addAttribute("qtdeBiblioteca", bibliotecaService.quantidade());
+		model.addAttribute("qtdeLivros", livroService.quantidade());
+		model.addAttribute("qtdeLiterarios", literarioService.quantidade());
+		model.addAttribute("qtdeAcademicos", academicoService.quantidade());
 		return "home";
 	}
 	@GetMapping(value = "/academico/listagem")
 	public String listarAcademico(Model model){
 		model.addAttribute("titulo","Listagem de Academicos");
 		model.addAttribute("listagem", academicoService.obterLista());
+		model.addAttribute("qtdeBiblioteca", bibliotecaService.quantidade());
+		model.addAttribute("qtdeLivros", livroService.quantidade());
+		model.addAttribute("qtdeLiterarios", literarioService.quantidade());
+		model.addAttribute("qtdeAcademicos", academicoService.quantidade());
 		return "home";
 	}
 	

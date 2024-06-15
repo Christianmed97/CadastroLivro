@@ -46,6 +46,7 @@ public class BibliotecaLoader implements ApplicationRunner{
 			biblioteca = new Biblioteca();
 			biblioteca.setEndereco(campos[1]);
 			biblioteca.setNome(campos[2]);
+			biblioteca.setEmail(campos[3]);
 			bibliotecaService.incluir(biblioteca);
 			break;
 		case "A": 

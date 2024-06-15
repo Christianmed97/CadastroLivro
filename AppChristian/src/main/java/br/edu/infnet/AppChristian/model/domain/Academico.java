@@ -1,5 +1,6 @@
 package br.edu.infnet.AppChristian.model.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 public class Academico extends Livro {
 	
 	private String area;
+	@Column(name="cs_volume")
 	private String volume;
 	
 	@Override

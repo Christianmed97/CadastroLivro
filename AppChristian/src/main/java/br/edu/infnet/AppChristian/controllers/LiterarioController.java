@@ -27,7 +27,10 @@ public class LiterarioController {
 	public Literario obterPorId(@PathVariable Integer id) {
 		return literarioService.obterPorId(id);
 	}
-	
+	@GetMapping(value = "/literario/lista/{tema}")
+	public Collection<Literario> obterPorTema(@PathVariable String tema) {
+		return literarioService.obterPorTema(tema);
+	}
 	@PostMapping(value = "/literario/incluir")
 	public void incluir(@RequestBody Literario literario) {
 		literarioService.incluir(literario);

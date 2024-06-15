@@ -1,5 +1,6 @@
 package br.edu.infnet.AppChristian.model.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 public class Literario extends Livro {
 	
 	private String tema;
+	@Column(name = "fl_infantil")
 	private boolean infantil;
 	private String tipo;
 	

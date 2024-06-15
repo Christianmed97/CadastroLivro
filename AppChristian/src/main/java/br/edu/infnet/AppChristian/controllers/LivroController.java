@@ -25,7 +25,10 @@ public class LivroController {
 	public Livro obterPorId(@PathVariable Integer id) {
 		return livroService.obterPorId(id);
 	}
-	
+	@GetMapping(value = "/livro/lista/{autor}")
+	public Collection<Livro> obterPorAutor(@PathVariable String autor) {
+		return livroService.obterPorAutor(autor);
+	}
 	@DeleteMapping(value = "/livro/{id}/excluir")
 	public void excluir(@PathVariable Integer id) {
 		livroService.excluir(id);
