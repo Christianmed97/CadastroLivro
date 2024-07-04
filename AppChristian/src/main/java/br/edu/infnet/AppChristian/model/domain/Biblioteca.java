@@ -12,11 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -28,7 +28,9 @@ public class Biblioteca {
 	private int id;
 	@NotBlank(message ="É necessario preencher o nome")
 	private String nome;
-	private String endereco;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="idEndereco")
+	private Endereco endereco;
 	@Email(message="O email esta invalido")
 	@Column(unique=true,name="cs_email")
 	private String email;
@@ -48,7 +50,7 @@ public class Biblioteca {
 
 	@Override
 	public String toString() {
-		return String.format("%d - %s - %s - %s - %s", id, nome,endereco,email,livros);
+		return String.format("%d - %s - Endereço: %s - %s - Livros: %s", id, nome,endereco,email,livros);
 	}
 	public int getId() {
 		return id;
@@ -69,13 +71,16 @@ public class Biblioteca {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getEndereco() {
+	
+	
+	public Endereco getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(String endereço) {
-		this.endereco = endereço;
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
-	
+
 	public void setLivro(List<Livro> livro) {
 		this.livros = livro;
 	}

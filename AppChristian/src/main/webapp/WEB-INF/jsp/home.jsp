@@ -15,25 +15,42 @@
 		<div class="container-fluid">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link active" href="/">AppLivro</a></li>
-				<li class="nav-item"><a class="nav-link" href="/biblioteca/listagem">Biblioteca</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/biblioteca/listagem">Biblioteca</a></li>
 				<li class="nav-item"><a class="nav-link" href="/livro/listagem">Livros</a></li>
-				<li class="nav-item"><a class="nav-link" href="/academico/listagem">Academicos</a></li>
-				<li class="nav-item"><a class="nav-link" href="/literario/listagem">Literarios</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/academico/listagem">Academicos</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/literario/listagem">Literarios</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/endereco/listagem">Enderecos</a></li>
+					<li class="nav-item"><a class="nav-link"
+					href="/openLivros/listagem">OpenLivros</a></li>
+					<li class="nav-item"><a class="nav-link"
+					href="/api/listagem">Api</a></li>
 			</ul>
+			
+			<form class="d-flex" action="/DetalhesOpenLivros/listagem" method="get">
+			<input class="form-control me-2" type="text" placeholder="Pesquise um Livro" name="titulo">
+			<button class="btn btn-primary" type="submit">Pesquisar</button>
+			</form>
+			
 		</div>
 	</nav>
 
 	<div class="container mt-3">
 
-		<span class="badge rounded-pill bg-primary">Biblioteca:
+		<span class="badge rounded-pill bg-primary">Bibliotecas:
 			${qtdeBiblioteca}</span> <span class="badge rounded-pill bg-secondary">Livros:
 			${qtdeLivros}</span> <span class="badge rounded-pill bg-success">Academicos:
 			${qtdeAcademicos}</span> <span class="badge rounded-pill bg-danger">Literarios:
-			${qtdeLiterarios}</span>
+			${qtdeLiterarios}</span> <span class="badge rounded-pill bg-warning">Endereços:
+			${qtdeEnderecos}</span> <span class="badge rounded-pill bg-warning">OpenLivros:
+			${qtdeOpenLivros}</span>
 
 		<c:if test="${not empty listagem}">
 			<h2>AppVenda</h2>
-			<p>GestÃ£o de vendas de livros:</p>
+			<p>Gestão de vendas de livros:</p>
 			<table class="table">
 				<thead class="table-dark">
 					<tr>
@@ -43,7 +60,7 @@
 				<tbody>
 					<c:forEach var="item" items="${listagem}">
 						<tr>
-							<td>${item} <a class="nav-link active" href="/delete">Delete</a></td> 
+							<td>"${item}"</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -64,11 +81,13 @@
 		        </div>
 		    </div>
 	    </c:if>--%>
-		
+
 	</div>
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>		
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 </body>
 </html>

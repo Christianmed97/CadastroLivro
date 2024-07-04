@@ -11,9 +11,11 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.AppChristian.model.domain.Academico;
 import br.edu.infnet.AppChristian.model.domain.Biblioteca;
+import br.edu.infnet.AppChristian.model.domain.Endereco;
 import br.edu.infnet.AppChristian.model.domain.Literario;
 import br.edu.infnet.AppChristian.model.service.AcademicoService;
 import br.edu.infnet.AppChristian.model.service.BibliotecaService;
+import br.edu.infnet.AppChristian.model.service.EnderecoService;
 import br.edu.infnet.AppChristian.model.service.LiterarioService;
 
 @Order(1)
@@ -26,6 +28,8 @@ public class BibliotecaLoader implements ApplicationRunner{
 	public AcademicoService academicoService;
 	@Autowired
 	public LiterarioService literarioService;
+	@Autowired
+	public EnderecoService enderecoService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -43,8 +47,10 @@ public class BibliotecaLoader implements ApplicationRunner{
 		campos= linha.split(";");
 		switch(campos[0].toUpperCase()) {
 		case "B":
+			System.out.println("teste"+campos[1]);
+			Endereco endereco= enderecoService.obterPorCep(campos[1]);
 			biblioteca = new Biblioteca();
-			biblioteca.setEndereco(campos[1]);
+			biblioteca.setEndereco(endereco);
 			biblioteca.setNome(campos[2]);
 			biblioteca.setEmail(campos[3]);
 			bibliotecaService.incluir(biblioteca);

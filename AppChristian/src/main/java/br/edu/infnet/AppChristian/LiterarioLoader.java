@@ -22,7 +22,6 @@ public class LiterarioLoader implements ApplicationRunner{
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		// TODO Auto-generated method stub
 		FileReader fr=new FileReader("arquivos/literario.txt");
 		BufferedReader br=new BufferedReader(fr);
 		String linha = br.readLine();

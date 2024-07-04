@@ -7,7 +7,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.edu.infnet.AppChristian.model.domain.Biblioteca;
 import br.edu.infnet.AppChristian.model.domain.Literario;
 
 @Repository

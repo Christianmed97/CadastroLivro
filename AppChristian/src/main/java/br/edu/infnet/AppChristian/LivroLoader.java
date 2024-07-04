@@ -30,7 +30,6 @@ public class LivroLoader implements ApplicationRunner{
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		// TODO Auto-generated method stub
 		FileReader fr=new FileReader("arquivos/livro.txt");
 		BufferedReader br=new BufferedReader(fr);
 		String linha = br.readLine();
